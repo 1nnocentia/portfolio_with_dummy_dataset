@@ -19,15 +19,14 @@ if (!function_exists('profile_image')) {
 if (!function_exists('portfolio_image')) {
     // Portfolio Project Image
     function portfolio_image($project, $filename = 'thumbnail.jpg')
-    {
-        $path = "images/portfolio/{$project}/{$filename}";
-        
-        if (file_exists(public_path($path))) {
-            return asset($path);
-        }
-        
-        // Fallback to placeholder
-        return "https://via.placeholder.com/400x250/667eea/ffffff?text=" . urlencode($project);
+{
+    $project = preg_replace('/[^a-zA-Z0-9_-]/', '', $project);
+    $path = "images/portfolio/{$project}/{$filename}";
+    
+    if (file_exists(public_path($path))) {
+        return asset($path);
+    }
+    return "https://via.placeholder.com/400x250/667eea/ffffff?text=" . urlencode($project);
     }
 }
 
@@ -47,29 +46,28 @@ if (!function_exists('blog_image')) {
 }
 
 if (!function_exists('skill_icon')) {
-    // Skill Icon
     function skill_icon($skill)
-    {
-        $iconPath = "images/icons/skills/{$skill}.svg";
-        
-        if (file_exists(public_path($iconPath))) {
-            return asset($iconPath);
-        }
-        
-        // Fallback ke Font Awesome icons
-        $fontAwesome = [
-            'laravel' => 'fab fa-laravel',
-            'php' => 'fab fa-php',
-            'javascript' => 'fab fa-js-square',
-            'react' => 'fab fa-react',
-            'vue' => 'fab fa-vuejs',
-            'html' => 'fab fa-html5',
-            'css' => 'fab fa-css3-alt',
-            'github' => 'fab fa-github',
-            'docker' => 'fab fa-docker',
-            'node' => 'fab fa-node-js',
-        ];
-        
-        return $fontAwesome[$skill] ?? 'fas fa-code';
+{
+    $skill = strtolower(preg_replace('/[^a-zA-Z0-9_-]/', '', $skill));
+    $iconPath = "images/icons/skills/{$skill}.svg";
+    
+    if (file_exists(public_path($iconPath))) {
+        return asset($iconPath);
     }
+    
+    $fontAwesome = [
+        'laravel' => 'fab fa-laravel',
+        'php' => 'fab fa-php',
+        'javascript' => 'fab fa-js-square',
+        'react' => 'fab fa-react',
+        'vue' => 'fab fa-vuejs',
+        'html' => 'fab fa-html5',
+        'css' => 'fab fa-css3-alt',
+        'github' => 'fab fa-github',
+        'docker' => 'fab fa-docker',
+        'node' => 'fab fa-node-js',
+    ];
+    
+    return $fontAwesome[$skill] ?? 'fas fa-code';
+}
 }

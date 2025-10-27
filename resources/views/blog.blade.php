@@ -24,3 +24,4 @@
     </div>
     <x-featured-post :post="$featuredPost ?? null" />
 </section>
+@endsection

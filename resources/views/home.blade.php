@@ -37,10 +37,10 @@
 
             <div class="flex justify-center lg:justify-end">
                 <div class="relative">
-                    <div class="w-80 h-80 bg-gradient-primary rounded-full flex items-center justify-center shadow-2xl animate-bounce-slow">\
+                    <div class="w-80 h-80 bg-gradient-primary rounded-full flex items-center justify-center shadow-2xl animate-bounce-slow">
                         <div class="w-72 h-72 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                            @if(file_exists(public_path('images/avatar.png')))
-                                <img src="{{ asset('images/avatar.png') }}" alt="Avatar" class="w-72 h-72 rounded-full object-cover">
+                            @if(file_exists(public_path('images/profile/avatar.png')))
+                                <img src="{{ asset('images/profile/avatar.png') }}" alt="Inno" class="w-72 h-72 rounded-full object-cover">
                             @else
                                 <div class="w-60 h-60 bg-gray-100 rounded-full flex items-center justify-center">
                                     <i class="fas fa-user text-6xl text-gray-400"></i>
@@ -48,7 +48,7 @@
                             @endif
                         </div>
                     </div>
-
+                    
                     <div class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full animate-ping"></div>
                     <div class="absolute -bottom-4 -right-4 w-6 h-6 bg-green-400 rounded-full animate-pulse"></div>
                     <div class="absolute top-1/2 -left-8 w-4 h-4 bg-red-400 rounded-full animate-bounce"></div>

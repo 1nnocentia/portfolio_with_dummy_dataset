@@ -17,6 +17,13 @@ class ContactController extends Controller {
         $guarantees = $this->getGuarantees();
         $faqs = $this->getFAQs();
         $services = $this->getServices();
+        $budgetRanges = [
+        ['value' => 'under-500k', 'label' => 'Under 500.000'],
+        ['value' => '500k-1m',    'label' => '500.000 - 1.000.000'],
+        ['value' => '1m-2.5m',    'label' => '1.000.000 - 2.500.000'],
+        ['value' => '2.5m-5m',    'label' => '2.500.000 - 5.000.000'],
+        ['value' => 'over-5m',    'label' => 'Over 5.000.000'],
+        ];
 
         return view('contact', compact(
             'contactInfo', 
@@ -24,7 +31,8 @@ class ContactController extends Controller {
             'socialMedia', 
             'guarantees', 
             'faqs', 
-            'services'
+            'services',
+            'budgetRanges'
         ));
     }
 
@@ -82,7 +90,6 @@ class ContactController extends Controller {
     {
         return [
             'address' => [
-                // 'street' => '123 Main Street',
                 'city' => 'Makassar',
                 'state' => 'South Sulawesi',
                 'zip' => '00000',

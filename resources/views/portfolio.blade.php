@@ -57,7 +57,7 @@
         See My Resume
     </a>
 </x-cta-block>
-
+@endsection 
 @push('scripts')
     @vite('resources/js/portfolio.js')
 @endpush

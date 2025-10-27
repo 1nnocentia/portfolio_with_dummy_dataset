@@ -25,7 +25,7 @@
                 <div class="bg-white p-8 rounded-2xl shadow-xl">
                     <h2 class="text-3xl font-bold mb-8 text-gray-900">Send Message</h2>
 
-                    <form action="#" method="POST" class="space-y-6">
+                    <form id="contact-form" action="{{ route('contact') }}" method="POST" class="space-y-6">
                         @csrf
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -43,7 +43,7 @@
                             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                             <input type="email" id="email" name="email" 
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                   placeholder="john@example.com" required>
+                                   placeholder="Wriothesley@genshin.com" required>
                         </div>
 
                         <div>
