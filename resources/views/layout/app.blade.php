@@ -8,7 +8,7 @@
     @include('partials.navbar')
 
     {{-- Main Content --}}
-    <main class="min-h-screen pt-16">
+    <main class="flex-grow">
         @yield('content')
     </main>
 

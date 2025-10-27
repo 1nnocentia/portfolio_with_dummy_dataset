@@ -55,28 +55,8 @@
             <i class="fas fa-newspaper text-6xl text-gray-300 mb-4"></i>
             <h3 class="text-2xl font-bold text-gray-900 mb-4">No Featured Post Available</h3>
             <p class="text-gray-600 mb-6 leading-relaxed">
-                Discover essential Laravel best practices that will help you write cleaner, more maintainable code. 
-                From proper use of Eloquent relationships to implementing design patterns...
+                Check back soon for fresh content and insights about web development and technology.
             </p>
-            <div class="flex items-center justify-between">
-                <a href="#" class="bg-gradient-primary text-white px-6 py-3 rounded-lg hover:shadow-glow transition-all duration-300 inline-flex items-center">
-                    Read Article
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <div class="flex items-center space-x-4 text-gray-500">
-                    <button class="hover:text-red-500 transition-colors">
-                        <i class="fas fa-heart"></i>
-                        <span class="ml-1">24</span>
-                    </button>
-                    <button class="hover:text-blue-500 transition-colors">
-                        <i class="fas fa-comment"></i>
-                        <span class="ml-1">8</span>
-                    </button>
-                    <button class="hover:text-green-500 transition-colors">
-                        <i class="fas fa-share"></i>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 @endif

@@ -62,7 +62,7 @@ class BlogController extends Controller {
                 'category_color' => $this->getCategoryColor($postArray['category']),
                 'date' => date('F j, Y', strtotime($postArray['published_at'])),
                 'reading_time' => $postArray['reading_time'],
-                'url' => '#', // Temporarily disable until we create the route
+                'url' => '#', 
                 'likes' => rand(15, 50), 
                 'comments' => rand(3, 15),
                 'views' => $postArray['views'] ?? 0,
@@ -136,7 +136,7 @@ class BlogController extends Controller {
             abort(404);
         }
 
-        return view('blog.show', compact('post', 'relatedPosts'));
+        return view('blog', compact('post', 'relatedPosts'));
     }
 
     // Get all blog posts
