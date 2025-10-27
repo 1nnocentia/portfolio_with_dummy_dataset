@@ -52,7 +52,7 @@
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                                    placeholder="+62 851 2345 6789">
                         </div>
-
+                        
                         <div>
                             <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
                             <select id="subject" name="subject" 
@@ -65,16 +65,17 @@
                             </select>
                         </div>
 
+                        {{-- Budget Range --}}
                         <div>
                             <label for="budget" class="block text-sm font-semibold text-gray-700 mb-2">Project Budget</label>
                             <select id="budget" name="budget" 
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                                
                                 <option value="">Select budget range</option>
-                                <option value="under-500k">Under 500.000</option>
-                                <option value="500k-1m">500.000 - 1.000.000</option>
-                                <option value="1m-2.5m">1.000.000 - 2.500.000</option>
-                                <option value="2.5m-5m">2.500.000 - 5.000.000</option>
-                                <option value="over-5m">Over 5.000.000</option>
+                                @foreach($budgetRanges as $range)
+                                    <option value="{{ $range['value'] }}">{{ $range['label'] }}</option>
+                                @endforeach
+                                
                             </select>
                         </div>
 

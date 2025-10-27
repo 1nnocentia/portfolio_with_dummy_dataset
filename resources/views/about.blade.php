@@ -72,31 +72,18 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             @if(isset($personalInfo['stats']) && is_array($personalInfo['stats']))
                 @foreach($personalInfo['stats'] as $stat)
-                    <div class="text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                        <div class="text-3xl font-bold {{ $stat['color'] ?? 'text-blue-600' }} mb-2">
-                            {{ $stat['value'] ?? '0' }}{{ $stat['suffix'] ?? '' }}
-                        </div>
-                        <div class="text-sm text-gray-600">{{ $stat['label'] ?? 'Metric' }}</div>
-                    </div>
+                    <x-stat-card 
+                        :value="$stat['value'] ?? '0'"
+                        :label="$stat['label'] ?? 'Metric'"
+                        :color="$stat['color'] ?? 'text-blue-600'"
+                        :suffix="$stat['suffix'] ?? ''"
+                    />
                 @endforeach
             @else
-                <!-- Default stats if no controller data -->
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">{{ $personalInfo['years_experience'] ?? '2' }}+</div>
-                    <div class="text-sm text-gray-600">Years Experience</div>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="text-3xl font-bold text-green-600 mb-2">{{ $personalInfo['projects_completed'] ?? '15' }}+</div>
-                    <div class="text-sm text-gray-600">Projects Completed</div>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">{{ $personalInfo['gpa'] ?? '3.9' }}+</div>
-                    <div class="text-sm text-gray-600">GPA</div>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="text-3xl font-bold text-red-600 mb-2">{{ $personalInfo['completion_rate'] ?? '100' }}%</div>
-                    <div class="text-sm text-gray-600">Success Rate</div>
-                </div>
+                <x-stat-card value="{{ $personalInfo['years_experience'] ?? '2' }}+" label="Years Experience" color="text-blue-600" />
+                <x-stat-card value="{{ $personalInfo['projects_completed'] ?? '15' }}+" label="Projects Completed" color="text-green-600" />
+                <x-stat-card value="{{ $personalInfo['gpa'] ?? '3.9' }}+" label="GPA" color="text-purple-600" />
+                <x-stat-card value="{{ $personalInfo['completion_rate'] ?? '100' }}%" label="Success Rate" color="text-red-600" />
             @endif
         </div>
         
@@ -197,40 +184,13 @@
             <div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gray-200"></div>
 
             <!-- Timeline items -->
-            <div class="space-y-12">
+           <div class="space-y-12">
                 @if(isset($experiences))
                     @foreach($experiences as $index => $exp)
-                        <div class="relative flex items-center">
-                            @if($index % 2 == 0)
-                                <!-- Left side -->
-                                <div class="flex-1 text-right pr-8">
-                                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                                        <div class="text-sm {{ $exp['color'] ?? 'text-blue-600' }} font-semibold mb-1">
-                                            {{ $exp['period'] ?? 'Present' }}
-                                        </div>
-                                        <h3 class="text-lg font-bold mb-2">{{ $exp['title'] }}</h3>
-                                        <p class="text-gray-600 mb-3">{{ $exp['company'] ?? $exp['institution'] }}</p>
-                                        <p class="text-sm text-gray-500">{{ $exp['description'] }}</p>
-                                    </div>
-                                </div>
-                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 {{ $exp['dot_color'] ?? 'bg-blue-600' }} rounded-full border-4 border-white shadow"></div>
-                                <div class="flex-1 pl-8"></div>
-                            @else
-                                <!-- Right side -->
-                                <div class="flex-1 pr-8"></div>
-                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 {{ $exp['dot_color'] ?? 'bg-blue-600' }} rounded-full border-4 border-white shadow"></div>
-                                <div class="flex-1 pl-8">
-                                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                                        <div class="text-sm {{ $exp['color'] ?? 'text-blue-600' }} font-semibold mb-1">
-                                            {{ $exp['period'] ?? 'Present' }}
-                                        </div>
-                                        <h3 class="text-lg font-bold mb-2">{{ $exp['title'] }}</h3>
-                                        <p class="text-gray-600 mb-3">{{ $exp['company'] ?? $exp['institution'] }}</p>
-                                        <p class="text-sm text-gray-500">{{ $exp['description'] }}</p>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
+                        <x-timeline-item 
+                            :item="$exp" 
+                            :align="$index % 2 == 0 ? 'left' : 'right'" 
+                        />
                     @endforeach
                 @else
                     <!-- Default timeline if no data -->
@@ -243,7 +203,6 @@
     </div>
 </section>
 @endif
-
 
 <!-- Personal Information & Interests -->
 <section class="py-20 bg-gray-50">
@@ -295,23 +254,25 @@
                 <h3 class="text-2xl font-bold mb-6">Interests & Hobbies</h3>
                 <div class="grid grid-cols-2 gap-4">
                     @forelse($personalInfo['interests'] ?? [] as $interest)
-                        <div class="interest-card">
-                            <i class="{{ $interest['icon'] }} text-2xl {{ $interest['color'] ?? 'text-blue-600' }} mb-3"></i>
-                            <h4 class="font-semibold mb-2">{{ $interest['name'] }}</h4>
-                            <p class="text-sm text-gray-600">{{ $interest['description'] }}</p>
-                        </div>
+                        <x-interest-card 
+                            :icon="$interest['icon']"
+                            :name="$interest['name']"
+                            :description="$interest['description']"
+                            :color="$interest['color'] ?? 'text-blue-600'"
+                        />
                     @empty
-                        <!-- Default interests -->
-                        <div class="interest-card">
-                            <i class="fas fa-code text-2xl text-blue-600 mb-3"></i>
-                            <h4 class="font-semibold mb-2">Coding</h4>
-                            <p class="text-sm text-gray-600">Building innovative solutions</p>
-                        </div>
-                        <div class="interest-card">
-                            <i class="fas fa-book text-2xl text-green-600 mb-3"></i>
-                            <h4 class="font-semibold mb-2">Learning</h4>
-                            <p class="text-sm text-gray-600">Exploring new technologies</p>
-                        </div>
+                        <x-interest-card 
+                            icon="fas fa-code"
+                            name="Coding"
+                            description="Building innovative solutions"
+                            color="text-blue-600"
+                        />
+                        <x-interest-card 
+                            icon="fas fa-book"
+                            name="Learning"
+                            description="Exploring new technologies"
+                            color="text-green-600"
+                        />
                     @endforelse
                 </div>
             </div>
@@ -319,23 +280,17 @@
     </div>
 </section>
 
-
-<section class="py-20 bg-gradient-primary text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold mb-6">Ready to Collaborate?</h2>
-        <p class="text-xl mb-8 opacity-90">
-            Let's create something amazing together! I'm available for freelance projects, 
-            full-time opportunities, or just a friendly chat about technology.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                Get In Touch
-            </a>
-            <a href="{{ route('portfolio') }}" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                View Portfolio
-            </a>
-        </div>
-    </div>
-</section>
+<x-cta-block 
+    title="Ready to Collaborate?"
+    text="Let's create something amazing together! I'm available for freelance projects, 
+          full-time opportunities, or just a friendly chat about technology."
+>
+    <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+        Get In Touch
+    </a>
+    <a href="{{ route('portfolio') }}" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+        View Portfolio
+    </a>
+</x-cta-block>
 
 @endsection

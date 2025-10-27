@@ -311,16 +311,27 @@ html {
     @apply bg-gray-800 hover:bg-gray-700 p-4 rounded-lg text-center transition-colors duration-200 flex flex-col items-center;
 }
 
-.faq-question:hover .fa-chevron-down {
-    @apply text-blue-600;
-}
-
-.faq-item.active .fa-chevron-down {
-    @apply transform rotate-180 text-blue-600;
+.faq-item .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .faq-item.active .faq-answer {
-    @apply block;
+  max-height: 500px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem; 
+  transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+
+.faq-item .faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
 }
 
 /* About Skill Category */
