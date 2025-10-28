@@ -44,33 +44,6 @@ class BlogController extends Controller {
         return view('blog', compact('posts', 'blogCategories', 'featuredPost', 'recentPosts'));
     }
 
-    // Format Blog Post
-    private function formatBlogPostsForTemplate($posts)
-    {
-        return collect($posts)->map(function($post) {
-            // Handle both array and model data
-            if (is_array($post)) {
-                $postArray = $post;
-            } else {
-                $postArray = $post->toArray();
-            }
-            
-            return [
-                'title' => $postArray['title'],
-                'excerpt' => $postArray['excerpt'],
-                'image' => $postArray['featured_image'],
-                'category' => $postArray['category'],
-                'category_color' => $this->getCategoryColor($postArray['category']),
-                'date' => date('F j, Y', strtotime($postArray['published_at'])),
-                'reading_time' => $postArray['reading_time'],
-                'url' => '#', 
-                'likes' => rand(15, 50), 
-                'comments' => rand(3, 15),
-                'views' => $postArray['views'] ?? 0,
-            ];
-        })->toArray();
-    }
-
     // Format Categories
     private function formatCategoriesForTemplate($categories)
     {
@@ -81,25 +54,6 @@ class BlogController extends Controller {
                 'icon' => $this->getCategoryIcon($category['name']),
             ];
         })->toArray();
-    }
-
-    // Category color class
-    private function getCategoryColor($category)
-    {
-        $colors = [
-            'Laravel' => 'bg-red-600',
-            'PHP' => 'bg-purple-600',
-            'JavaScript' => 'bg-yellow-600',
-            'React' => 'bg-blue-600',
-            'CSS' => 'bg-green-600',
-            'API' => 'bg-purple-600',
-            'DevOps' => 'bg-gray-600',
-            'Tutorial' => 'bg-indigo-600',
-            'Frontend' => 'bg-cyan-600',
-            'Backend' => 'bg-orange-600',
-        ];
-
-        return $colors[$category] ?? 'bg-blue-600';
     }
 
     // Category icon
