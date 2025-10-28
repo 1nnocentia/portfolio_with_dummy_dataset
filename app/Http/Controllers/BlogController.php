@@ -29,9 +29,10 @@ class BlogController extends Controller {
             });
         }
 
-        $posts = $query->get();
-        $categories = $this->getCategories();
-        $featuredPost = $this->getFeaturedPost();
+    $posts = $query->get();
+    $categories = $this->getCategories();
+    // Use controller helper to get a single featured post (model) or null
+    $featuredPost = $this->getFeaturedPost();
         $recentPosts = BlogPost::where('status', 'published')
                               ->orderBy('published_at', 'desc')
                               ->limit(3)
@@ -184,8 +185,7 @@ class BlogController extends Controller {
                                    ->orderBy('published_at', 'desc')
                                    ->first();
         }
-        
-        return $featuredPost ? $featuredPost->toArray() : null;
+        return $featuredPost ?: null;
     }
 
     // Get blog post by slug

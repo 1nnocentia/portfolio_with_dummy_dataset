@@ -9,91 +9,49 @@ class PortfolioController extends Controller {
     // Display all projects with filtering
     public function index(Request $request)
     {
-        $projects = $this->getAllProjects();
+        $query = Project::query();
+
+        if ($request->filled('category') && $request->category !== 'all') {
+            $query->where('category', $request->category);
+        }
+        
+    // Respect any filters applied to the query (category, etc.)
+    $projects = $query->get();
         $categories = $this->getCategories();
         $technologies = $this->getTechnologies();
 
-        // Filter by category if provided
-        if ($request->has('category') && $request->category !== 'all') {
-            $projects = array_filter($projects, function($project) use ($request) {
-                return $project['category'] === $request->category;
-            });
-        }
-
         return view('portfolio', compact('projects', 'categories', 'technologies'));
-    }
-
-    // Get all projects
-    private function getAllProjects()
-    {
-        return [
-            [
-                'id' => 1,
-                'title' => 'Time Management Website',
-                'description' => 'A full-featured time management website with streak, task scheduling, reminders, and user authentication.',
-                'image' => '/images/portfolio/clockin.jpg',
-                'technologies' => ['Java', 'TailwindCSS', 'MySQL'],
-                'category' => 'web',
-                'github_url' => '#',
-                'demo_url' => '#',
-                'featured' => true
-            ],
-            [
-                'id' => 2,
-                'title' => 'Smart Contract Audit Tools',
-                'description' => 'A set of tools for auditing smart contracts, ensuring security and compliance.',
-                'image' => '/images/portfolio/zectra.png',
-                'technologies' => ['Python', 'Node.js', 'Docker'],
-                'category' => 'mobile',
-                'github_url' => '#',
-                'demo_url' => '#',
-                'featured' => true
-            ],
-            [
-                'id' => 3,
-                'title' => 'Little Monologue Multi-Platform',
-                'description' => 'A multi-platform application for sharing about mental health and self-development.',
-                'image' => '/images/portfolio/littlemonologue.png',
-                'technologies' => ['React', 'API', 'Docker'],
-                'category' => 'design',
-                'github_url' => '#',
-                'demo_url' => '#',
-                'featured' => true
-            ],
-            [
-                'id' => 4,
-                'title' => 'Script Of The Soul',
-                'description' => 'Cross-platform shopping app with real-time updates and payment integration.',
-                'image' => 'https://via.placeholder.com/400x250/10b981/ffffff?text=API+System',
-                'technologies' => ['Flutter', 'Dart', 'Firebase'],
-                'category' => 'backend',
-                'github_url' => '#',
-                'demo_url' => '#',
-                'featured' => false
-            ],
-            [
-                'id' => 5,
-                'title' => 'Personal Portfolio Website',
-                'description' => 'Responsive portfolio website built with Laravel and TailwindCSS featuring modern animations.',
-                'image' => 'https://via.placeholder.com/400x250/ef4444/ffffff?text=Portfolio+Website',
-                'technologies' => ['Laravel', 'TailwindCSS', 'JavaScript'],
-                'category' => 'web',
-                'github_url' => '#',
-                'demo_url' => '#',
-                'featured' => false
-            ]
-        ];
     }
 
     // Get project categories
     private function getCategories()
     {
-        return [
-            ['key' => 'web', 'name' => 'Web Development', 'icon' => 'fas fa-globe'],
-            ['key' => 'mobile', 'name' => 'Mobile Apps', 'icon' => 'fas fa-mobile-alt'],
-            ['key' => 'design', 'name' => 'UI/UX Design', 'icon' => 'fas fa-paint-brush'],
-            ['key' => 'backend', 'name' => 'Backend Systems', 'icon' => 'fas fa-server']
+        $uniqueCategories = Project::distinct()->pluck('category')->filter()->values();
+
+        $categoryDetails = [
+            'web-dev'    => ['name' => 'Web Development', 'icon' => 'fas fa-globe'],
+            'mobile-app' => ['name' => 'Mobile Apps', 'icon' => 'fas fa-mobile-alt'],
+            'data-science' => ['name' => 'Data Science', 'icon' => 'fas fa-brain'],
+            'automation' => ['name' => 'Automation', 'icon' => 'fas fa-robot'],
         ];
+
+        $formattedCategories = [];
+        foreach ($uniqueCategories as $key) {
+            if (isset($categoryDetails[$key])) {
+                $formattedCategories[] = [
+                    'key' => $key,
+                    'name' => $categoryDetails[$key]['name'],
+                    'icon' => $categoryDetails[$key]['icon'],
+                ];
+            } else {
+                 $formattedCategories[] = [
+                    'key' => $key,
+                    'name' => ucfirst(str_replace('-', ' ', $key)), // Coba buat nama otomatis
+                    'icon' => 'fas fa-folder',
+                ];
+            }
+        }
+        return $formattedCategories;
     }
 
     // Available tech
