@@ -7,7 +7,8 @@
 <section class="pt-20 pb-16 bg-linear-to-br from-blue-50 via-white to-purple-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-5xl font-bold mb-6 text-gradient">About Me</h1>
+            <h1 class="text-5xl font-bold mb-6 text-gradient overflow-y-visible">About Me</h1>
+            <div class="w-20 h-1 bg-gradient-primary mx-auto mb-6"></div>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Get to know more about my journey, skills, and passion for creating amazing digital experiences
             </p>
@@ -24,8 +25,8 @@
                     <div class="w-full h-full bg-white rounded-2xl flex items-center justify-center">
                         <div class="text-center">
                             <div class="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden">
-                                @if(file_exists(public_path('images/avatar.png')))
-                                    <img src="{{ asset('images/avatar.png') }}" alt="Inno" class="w-full h-full object-cover">
+                                @if(file_exists(public_path('images/profile/avatar.png')))
+                                    <img src="{{ asset('images/profile/avatar.png') }}" alt="Inno" class="w-full h-full object-cover">
                                 @else
                                     <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
                                         <i class="fas fa-user text-6xl text-gray-400"></i>

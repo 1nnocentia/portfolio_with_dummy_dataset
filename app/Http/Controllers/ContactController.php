@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller {
@@ -17,13 +15,7 @@ class ContactController extends Controller {
         $guarantees = $this->getGuarantees();
         $faqs = $this->getFAQs();
         $services = $this->getServices();
-        $budgetRanges = [
-        ['value' => 'under-500k', 'label' => 'Under 500.000'],
-        ['value' => '500k-1m',    'label' => '500.000 - 1.000.000'],
-        ['value' => '1m-2.5m',    'label' => '1.000.000 - 2.500.000'],
-        ['value' => '2.5m-5m',    'label' => '2.500.000 - 5.000.000'],
-        ['value' => 'over-5m',    'label' => 'Over 5.000.000'],
-        ];
+        $budgetRanges = $this->getBudgetRanges();
 
         return view('contact', compact(
             'contactInfo', 
@@ -90,9 +82,7 @@ class ContactController extends Controller {
     {
         return [
             'address' => [
-                'city' => 'Makassar',
                 'state' => 'South Sulawesi',
-                'zip' => '00000',
                 'country' => 'Indonesia'
             ],
             'phone' => '+62 851 2345 6789',
@@ -124,7 +114,7 @@ class ContactController extends Controller {
             ],
             [
                 'label' => 'Location',
-                'value' => ['Makassar, South Sulawesi 00000'],
+                'value' => ['South Sulawesi'],
                 'icon' => 'fas fa-map-marker-alt',
                 'icon_color' => 'text-purple-600',
                 'bg_color' => 'bg-purple-100'
@@ -235,19 +225,15 @@ class ContactController extends Controller {
         ];
     }
     // Project budget ranges
-    public function create()
+    public function getBudgetRanges()
     {
-        $budgetRanges = [
-            ['value' => 'under-500k', 'label' => 'Di bawah 500.000'],
+        return [
+            ['value' => 'under-500k', 'label' => 'Under 500.000'],
             ['value' => '500k-1m',    'label' => '500.000 - 1.000.000'],
             ['value' => '1m-2.5m',    'label' => '1.000.000 - 2.500.000'],
             ['value' => '2.5m-5m',    'label' => '2.500.000 - 5.000.000'],
-            ['value' => 'over-5m',    'label' => 'Di atas 5.000.000'],
+            ['value' => 'over-5m',    'label' => 'Over 5.000.000'],
         ];
-
-        return view('contact', [
-            'budgetRanges' => $budgetRanges
-        ]);
     }
 
     // Project timeline

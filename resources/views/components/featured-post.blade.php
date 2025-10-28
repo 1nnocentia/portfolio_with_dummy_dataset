@@ -53,8 +53,8 @@
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
         <div class="p-8 lg:p-12 text-center">
             <i class="fas fa-newspaper text-6xl text-gray-300 mb-4"></i>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">No Featured Post Available</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-400 mb-4">No Featured Post Available</h3>
+            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
                 Check back soon for fresh content and insights about web development and technology.
             </p>
         </div>

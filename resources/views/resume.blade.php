@@ -16,7 +16,6 @@
     </div>
 </section>
 
-
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -77,14 +76,14 @@
                             title="Natural Language Processing with Classification and Vector Spaces"
                             issuer="DeepLearning.AI - 2023"
                             icon="fas fa-certificate"
-                            iconBg="bg-yellow-100"
-                            iconColor="text-yellow-600"
+                            iconBg="bg-blue-100"
+                            iconColor="text-blue-600"
                         />
 
                         <x-certification-item
                             title="Supervised Machine Learning: Regression and Classification"
                             issuer="DeepLearning.AI, Coursera, Stanford CPD, UVM - 2023"
-                            icon="fas fa-trophy"
+                            icon="fas fa-certificate"
                             iconBg="bg-blue-100"
                             iconColor="text-blue-600"
                         />
@@ -92,9 +91,9 @@
                         <x-certification-item
                             title="Certificate of Competencies - Kalbe Nutritional Data Scientist Virtual Internship Experience Program"
                             issuer="Kalbe Nutritionals (PT Sanghiang Perkasa) - 2023"
-                            icon="fas fa-medal"
-                            iconBg="bg-green-100"
-                            iconColor="text-green-600"
+                            icon="fas fa-certificate"
+                            iconBg="bg-blue-100"
+                            iconColor="text-blue-600"
                         />
 
                     </div>

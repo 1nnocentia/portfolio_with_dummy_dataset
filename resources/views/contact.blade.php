@@ -4,11 +4,11 @@
 
 @section('content')
 
-{{-- Hero Section --}}
 <section class="pt-20 pb-16 bg-linear-to-br from-blue-50 via-white to-purple-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-5xl font-bold mb-6 text-gradient">Get In Touch</h1>
+            <div class="w-20 h-1 bg-gradient-primary mx-auto mb-6"></div>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Have a project in mind? Let's discuss how we can work together to bring your ideas to life
             </p>
@@ -162,7 +162,7 @@
                     <div class="bg-gray-900 p-8 rounded-2xl text-white">
                         <h3 class="text-2xl font-bold mb-6">Follow Me</h3>
                         <p class="text-gray-300 mb-6">Connect with me on social media for updates and behind-the-scenes content</p>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-3 gap-4">
                             @foreach($socialMedia as $social)
                                 <a href="{{ $social['url'] }}" target="_blank" class="social-card">
                                     <i class="{{ $social['icon'] }} text-2xl mb-2"></i>

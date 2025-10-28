@@ -7,7 +7,8 @@
 <section class="pt-20 pb-16 bg-linear-to-br from-blue-50 via-white to-purple-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-5xl font-bold mb-6 text-gradient">My Portfolio</h1>
+            <h1 class="text-5xl font-bold mb-7 text-gradient">My Portfolio</h1>
+            <div class="w-20 h-1 bg-gradient-primary mx-auto mb-6"></div>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Explore my collection of projects that showcase my skills in web development, 
                 design, and problem-solving across various technologies and industries

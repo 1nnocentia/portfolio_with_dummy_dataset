@@ -374,6 +374,6 @@ html {
     @apply bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out;
 }
 
-.interest-card {
+/* .interest-card {
     @apply bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center;
-}
+} */

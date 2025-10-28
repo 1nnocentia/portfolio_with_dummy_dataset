@@ -36,13 +36,13 @@ class AboutController extends Controller {
             'tagline' => 'Passionate developer with expertise in modern web technologies and problem-solving skills',
             'about_title' => 'My Story',
             'bio' => "I'm an aspiring Machine Learning Engineer and an enthusiastic AI aficionado. My passion lies at the intersection of code and cognition, focusing on real-world AI applications, especially with AI-integrated IoT.",
-            'mission' => 'I\'m dedicated to creating ethical, interpretable, and human-centered AI systems that reflect our values, not just technical sophistication.',
+            'mission' => "I'm dedicated to creating ethical, interpretable, and human-centered AI systems that reflect our values, not just technical sophistication.",
             'story' => [
-                "I'm Han Inno, an aspiring Machine Learning Engineer and an enthusiastic AI aficionado. My passion lies at the intersection of code and cognition, focusing on real-world AI applications, especially with AI-integrated IoT. I\'m dedicated to creating ethical, interpretable, and human-centered AI systems that reflect our values, not just technical sophistication.",
+                "I'm Han Inno, an aspiring Machine Learning Engineer and an enthusiastic AI aficionado. My passion lies at the intersection of code and cognition, focusing on real-world AI applications, especially with AI-integrated IoT. I'm dedicated to creating ethical, interpretable, and human-centered AI systems that reflect our values, not just technical sophistication.",
                 " ",
-                "Currently, I\'m strengthening my full-stack foundation, delving into backend development with Java, Spring Boot, and MySQL, while also exploring frontend and mobile technologies like React and Flutter. My journey also involves diving into ML workflows and smart contract security, all aimed at building robust and intuitive AI solutions.",
+                "Currently, I'm strengthening my full-stack foundation, delving into backend development with Java, Spring Boot, and MySQL, while also exploring frontend and mobile technologies like React and Flutter. My journey also involves diving into ML workflows and smart contract security, all aimed at building robust and intuitive AI solutions.",
                 " ",
-                "I believe technology is a powerful medium for self- expression and innovation. My goal is to craft intelligent system with empathy, making AI not just smart, but truly meaningful."
+                "I believe technology is a powerful medium for self-expression and innovation. My goal is to craft intelligent system with empathy, making AI not just smart, but truly meaningful."
             ],
             'location' => 'Indonesia',
             'email' => 'letsworkwithinno@gmail.com',

@@ -1,4 +1,7 @@
 import './bootstrap';
+import './about';
+import './blog';
+import './portfolio';
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {

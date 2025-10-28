@@ -7,7 +7,8 @@
 <section class="pt-20 pb-16 bg-linear-to-br from-blue-50 via-white to-purple-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-5xl font-bold mb-6 text-gradient">Blog & Insights</h1>
+            <h1 class="text-5xl font-bold mb-6 text-gradient overflow-y-visible">Blog & Insights</h1>
+            <div class="w-20 h-1 bg-gradient-primary mx-auto mb-6"></div>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Sharing knowledge, experiences, and insights about web development, technology trends, and best practices
             </p>
@@ -15,7 +16,7 @@
     </div>
 </section>
 
-<section class="py-20 bg-white">
+<section class="py-22 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold mb-4">Featured Article</h2>
